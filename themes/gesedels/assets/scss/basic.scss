@@ -97,9 +97,13 @@ code {
         .post-body {
             text-align: justify;
 
-            .post-body-archive span {
-                color: var(--grey);
-                float: right;
+            .post-body-archive {
+                line-height: 1.8rem;
+
+                span {
+                    color: var(--grey);
+                    float: right;
+                }
             }
 
             pre {
