@@ -1,7 +1,7 @@
 # netlify.toml
 
 [build]
-command = "hugo"
+command = "hugo --minify"
 publish = "public"
 
 [build.environment]
