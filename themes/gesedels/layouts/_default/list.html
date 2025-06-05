@@ -1,0 +1,38 @@
+{{ define "name" }}
+    {{ if eq .Type "tags" }}
+        {{ .Data.Singular | title }}: {{ .Title }}
+    {{ else }}
+        {{ .Title }}
+    {{ end }}
+{{ end }}
+
+{{ define "main" }}
+    <article class="post">
+        <hgroup class="post-header">
+            <h2 class="post-header-title">
+                {{ if eq .Type "tags" }}
+                    {{ .Data.Singular | title }}:
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                {{ else }}
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                {{ end }}
+            </h2>
+        </hgroup>
+
+        <div class="post-body">
+            <div class="post-body-list">
+                {{ range .Pages.GroupByDate "January 2006" }}
+                    <h3> {{ .Key }} </h3>
+                    <ul>
+                        {{ range .Pages }}
+                            <li>
+                                <a class="post-body-list-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                <span class="post-body-list-date"> {{ .Date.Format "2 January 2006" }} </span>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            {{ end }}
+        </div>
+    </article>
+{{ end }}

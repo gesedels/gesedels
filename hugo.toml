@@ -1,5 +1,51 @@
 # hugo.toml
 
-baseURL = "https://gesedels.com/"
-languageCode = "en-us"
 title = "Gesedels"
+baseURL = "https://gesedels.com/"
+copyright = "© Stephen Malone 2025."
+languageCode = "en-us"
+theme = "gesedels"
+timeZone = "Australia/Brisbane"
+
+[frontmatter]
+date = [":filename"]
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[pagination]
+disableAliases = false
+pagerSize = 10
+path = "page"
+
+[params]
+description = "Haiku about the melancholy minutia, by Stephen Malone."
+
+navigation = [
+    [
+        "about",
+        "/pages/about/",
+    ],
+    [
+        "posts",
+        "/posts/",
+    ],
+    [
+        "bluesky",
+        "https://bsky.app/profile/gesedels.bsky.social",
+    ],
+    [
+        "email",
+        "mailto:mail@gesedels.com",
+    ],
+]
+
+[params.author]
+name = "Stephen Malone"
+email = "mail@gesedels.com"
+
+[permalinks]
+tag = "/tag/:slug/"
+
+[taxonomies]
+tag = "tags"
