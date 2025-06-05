@@ -1,7 +1,7 @@
 ---
 title: 'Bootstraps'
 date: '2025-06-02'
-tags: ["winter", "paper", "yellow"]
+tags: ['winter', 'paper', 'yellow']
 ---
 
 ```
