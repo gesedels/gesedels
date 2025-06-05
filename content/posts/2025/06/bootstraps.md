@@ -12,5 +12,4 @@ falls from a penthouse window:
 
 <!--more-->
 
-Yoko Ono had an art piece where you climb a ladder and look at a tiny piece of paper stuck to the ceiling, only to discover it simply says "Yes!".
-I don't know why, but the post-it made me think of that.
+Yoko Ono once had an art piece where you climb a ladder and look at a tiny piece of note paper stuck to the ceiling, only to discover it simply says "Yes!".

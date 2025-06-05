@@ -1,0 +1,84 @@
+:root {
+    --back: light-dark(#fff, #111);
+    --fore: light-dark(#333, #eee);
+    --grey: light-dark(#666, #aaa);
+    --line: light-dark(#888, #888);
+    --link-norm: light-dark(blue, #7ae);
+    --link-vstd: light-dark(purple, #a9e);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+pre,
+code {
+    font-family:
+        Instrument Sans,
+        system-ui,
+        sans-serif;
+    font-size: 17px;
+    line-height: 1.6em;
+}
+
+body {
+    background-color: var(--back);
+    color: var(--fore);
+    margin: 0rem auto;
+    max-width: 52ch;
+    padding: 0 1rem;
+
+    a,
+    a:link {
+        color: var(--link-norm);
+    }
+
+    a:visited {
+        color: var(--link-vstd);
+    }
+}
+
+body > header {
+    text-align: center;
+
+    nav ul {
+        column-gap: 1rem;
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        padding-left: 0;
+    }
+}
+
+main article {
+    div {
+        text-align: justify;
+    }
+
+    hgroup p {
+        color: var(--grey);
+    }
+
+    ol,
+    ul {
+        padding-inline-start: 1rem;
+
+        span {
+            color: var(--grey);
+            float: right;
+        }
+    }
+
+    pre {
+        border-left: 0.1rem solid var(--line);
+        font-weight: 500;
+        line-height: 2rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+}
+
+body > footer {
+    color: var(--grey);
+    text-align: center;
+}
