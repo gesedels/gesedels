@@ -1,17 +1,15 @@
-<div class="post-footer">
-    <div class="post-footer-navigation">
-        <ul>
-            {{ with .PrevInSection }}
-                <li class="post-footer-navigation-previous">
-                    Previous: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </li>
-            {{ end }}
+<div>
+    <ul>
+        {{ with .PrevInSection }}
+            <li>
+                Previous: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+        {{ end }}
 
-            {{ with .NextInSection }}
-                <li class="post-footer-navigation-next">
-                    Next: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </li>
-            {{ end }}
-        </ul>
-    </div>
+        {{ with .NextInSection }}
+            <li>
+                Next: <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+        {{ end }}
+    </ul>
 </div>

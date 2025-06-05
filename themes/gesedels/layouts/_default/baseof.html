@@ -2,9 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>
-            {{ site.Title }} · {{ block "name" . }} {{ end }}
-        </title>
+        <title>{{ site.Title }} · {{ block "name" . }} {{ end }}</title>
         <link rel="canonical" href="{{ .Permalink }}">
         <meta name="color-scheme" content="light dark">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,13 +26,15 @@
         <meta property="og:url" content="{{ .Permalink }}">
     </head>
 
-    <body id="site">
-        <header id="site-header">
-            <h1 id="site-header-title">
-                <a href="/">{{ site.Title }}</a>
-            </h1>
+    <body>
+        <header>
+            <hgroup>
+                <h1>
+                    <a href="/">{{ site.Title }}</a>
+                </h1>
+            </hgroup>
 
-            <nav id="site-header-navigation">
+            <nav>
                 <ul>
                     {{ range site.Params.navigation }}
                         <li>
@@ -45,11 +45,11 @@
             </nav>
         </header>
 
-        <main id="site-body">
+        <main>
             {{ block "main" . }} {{ end }}
         </main>
 
-        <footer id="site-footer">
+        <footer>
             <p>
                 {{ site.Copyright | markdownify }}
                 Powered by <a href="https://gohugo.io">Hugo</a>.
