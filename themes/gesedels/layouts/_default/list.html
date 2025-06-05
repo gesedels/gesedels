@@ -1,6 +1,6 @@
 {{ define "name" }}
     {{ if eq .Type "tags" }}
-        {{ .Data.Singular | title }}: {{ .Title }}
+        #{{ .Title | lower }}
     {{ else }}
         {{ .Title }}
     {{ end }}
@@ -11,8 +11,7 @@
         <hgroup>
             <h2>
                 {{ if eq .Type "tags" }}
-                    {{ .Data.Singular | title }}:
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    <a href="{{ .RelPermalink }}">#{{ .Title | lower }}</a>
                 {{ else }}
                     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                 {{ end }}
