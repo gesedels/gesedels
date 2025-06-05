@@ -26,32 +26,30 @@
         <meta property="og:url" content="{{ .Permalink }}">
     </head>
 
-    <body>
-        <header>
-            <hgroup>
-                <h1>
-                    <a href="/">{{ site.Title }}</a>
-                </h1>
-            </hgroup>
-
-            <nav>
-                <ul>
-                    {{ range site.Params.navigation }}
-                        <li>
-                            <a href="{{ index . 1 }}">{{ index . 0 }}</a>
-                        </li>
-                    {{ end }}
-                </ul>
-            </nav>
+    <body id="site">
+        <header id="site-header">
+            <h1 id="site-header-title">
+                <a href="/">{{ site.Title }}</a>
+            </h1>
         </header>
 
-        <main>
+        <nav id="site-navigation">
+            <ul id="site-navigation-menu">
+                {{ range site.Params.navigation }}
+                    <li>
+                        <a href="{{ index . 1 }}">{{ index . 0 }}</a>
+                    </li>
+                {{ end }}
+            </ul>
+        </nav>
+
+        <main id="site-body">
             {{ block "main" . }} {{ end }}
         </main>
 
-        <footer>
+        <footer id="site-footer">
             <p>
-                {{ site.Copyright | markdownify }}
+                © {{ site.Params.author.name }} {{ now.Format "2006" }}.
                 Powered by <a href="https://gohugo.io">Hugo</a>.
             </p>
         </footer>

@@ -7,9 +7,9 @@
 {{ end }}
 
 {{ define "main" }}
-    <article>
-        <hgroup>
-            <h2>
+    <article class="post">
+        <hgroup class="post-header">
+            <h2 class="post-header-title">
                 {{ if eq .Type "tags" }}
                     <a href="{{ .RelPermalink }}">#{{ .Title | lower }}</a>
                 {{ else }}
@@ -18,10 +18,10 @@
             </h2>
         </hgroup>
 
-        <div>
+        <div class="post-body">
             {{ range .Pages.GroupByDate "January 2006" }}
                 <h3> {{ .Key }} </h3>
-                <ul>
+                <ul class="post-body-archive">
                     {{ range .Pages }}
                         <li>
                             <a href="{{ .RelPermalink }}">{{ .Title }}</a>

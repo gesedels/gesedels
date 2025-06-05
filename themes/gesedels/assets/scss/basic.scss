@@ -22,7 +22,7 @@ code {
     line-height: 1.6em;
 }
 
-body {
+#site {
     background-color: var(--back);
     color: var(--fore);
     margin: 0rem auto;
@@ -37,12 +37,21 @@ body {
     a:visited {
         color: var(--link-vstd);
     }
+
+    ol,
+    ul {
+        padding-inline-start: 1rem;
+    }
 }
 
-body > header {
+#site-header {
+    text-align: center;
+}
+
+#site-navigation {
     text-align: center;
 
-    nav ul {
+    #site-navigation-menu {
         column-gap: 1rem;
         display: flex;
         justify-content: center;
@@ -51,33 +60,30 @@ body > header {
     }
 }
 
-main article {
-    div {
-        text-align: justify;
-    }
-
-    hgroup p {
-        color: var(--grey);
-    }
-
-    ol,
-    ul {
-        padding-inline-start: 1rem;
-
-        span {
+#site-body {
+    .post {
+        .post-header-metadata {
             color: var(--grey);
-            float: right;
         }
-    }
 
-    pre {
-        border-left: 0.1rem solid var(--line);
-        line-height: 2rem;
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        .post-body {
+            text-align: justify;
+
+            .post-body-archive span {
+                color: var(--grey);
+                float: right;
+            }
+
+            pre {
+                border-left: 0.1rem solid var(--line);
+                line-height: 2rem;
+                padding: 0.5rem 1rem 0.5rem 1rem;
+            }
+        }
     }
 }
 
-body > footer {
+#site-footer {
     color: var(--grey);
     text-align: center;
 }

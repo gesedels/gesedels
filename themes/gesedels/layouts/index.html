@@ -8,13 +8,13 @@
     {{ $options := dict "page" . "format" "terse" }}
 
     {{ range $paginator.Pages }}
-        <article>
+        <article class="post">
             {{ partial "post-header.html" . }}
             {{ partial "post-body.html"   . }}
         </article>
     {{ end }}
 
-    <div>
+    <div class="pagination">
         {{ template "_internal/pagination.html" $options }}
     </div>
 {{ end }}
