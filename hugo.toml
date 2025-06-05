@@ -5,9 +5,6 @@ languageCode = "en-us"
 theme = "gesedels"
 timeZone = "Australia/Brisbane"
 
-[frontmatter]
-date = [":filename"]
-
 [markup.goldmark.renderer]
 unsafe = true
 
