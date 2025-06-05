@@ -1,5 +1,3 @@
-# hugo.toml
-
 title = "Gesedels"
 baseURL = "https://gesedels.com/"
 copyright = "© Stephen Malone 2025."
@@ -20,7 +18,6 @@ path = "page"
 
 [params]
 description = "Haiku about the melancholy minutia, by Stephen Malone."
-
 navigation = [
     [
         "about",

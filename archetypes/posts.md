@@ -1,8 +1,9 @@
-+++
-title = "{{ substr .Name 11 | title }}"
-slug = "{{ substr .Name 11 | lower }}"
-tags = ["untagged"] # season, subject, colour.
-+++
+---
+title: '{{ replace .Name "-" " " | title }}'
+date: '{{ now.Format "2006-01-02" }}'
+slug: '{{ .Name | title }}'
+tags: ["untagged"] # season, subject, colour.
+---
 
 ```
 Haiku.
