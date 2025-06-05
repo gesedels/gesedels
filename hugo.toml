@@ -17,10 +17,6 @@ path = "page"
 description = "Haiku about our melancholy minutia, by Stephen Malone."
 navigation = [
     [
-        "home",
-        "/",
-    ],
-    [
         "about",
         "/pages/about/",
     ],

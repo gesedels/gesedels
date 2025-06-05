@@ -31,17 +31,17 @@
             <h1 id="site-header-title">
                 <a href="/">{{ site.Title }}</a>
             </h1>
-        </header>
 
-        <nav id="site-navigation">
-            <ul id="site-navigation-menu">
-                {{ range site.Params.navigation }}
-                    <li>
-                        <a href="{{ index . 1 }}">{{ index . 0 }}</a>
-                    </li>
-                {{ end }}
-            </ul>
-        </nav>
+            <nav id="site-header-navigation">
+                <ul id="site-header-navigation-menu">
+                    {{ range site.Params.navigation }}
+                        <li>
+                            <a href="{{ index . 1 }}">{{ index . 0 }}</a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </nav>
+        </header>
 
         <main id="site-body">
             {{ block "main" . }} {{ end }}

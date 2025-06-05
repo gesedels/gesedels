@@ -1,10 +1,22 @@
 :root {
     --back: light-dark(#fff, #111);
     --fore: light-dark(#333, #eee);
-    --grey: light-dark(#666, #aaa);
-    --line: light-dark(#888, #888);
-    --link-norm: light-dark(blue, #7ae);
-    --link-vstd: light-dark(purple, #a9e);
+    --grey: light-dark(#888, #999);
+    --blue: light-dark(#05a, #6be);
+    --purple: light-dark(#50a, #b6e);
+    --silver: light-dark(#ccc, #555);
+    --border: 0.1rem solid var(--silver);
+    --shadow: 0.1rem 0.1rem 0 var(--silver);
+}
+
+@mixin a($normal, $visited) {
+    a:link {
+        color: $normal;
+    }
+
+    a:visited {
+        color: $visited;
+    }
 }
 
 * {
@@ -18,25 +30,18 @@ code {
         Instrument Sans,
         system-ui,
         sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.6em;
 }
 
 #site {
+    @include a(var(--blue), var(--purple));
     background-color: var(--back);
     color: var(--fore);
-    margin: 0rem auto;
-    max-width: 52ch;
-    padding: 0 1rem;
-
-    a,
-    a:link {
-        color: var(--link-norm);
-    }
-
-    a:visited {
-        color: var(--link-vstd);
-    }
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
     ol,
     ul {
@@ -45,16 +50,25 @@ code {
 }
 
 #site-header {
-    text-align: center;
-}
+    align-items: center;
+    background-color: var(--back);
+    border-bottom: var(--border);
+    column-gap: 1rem;
+    display: flex;
+    justify-content: center;
+    margin: 0;
 
-#site-navigation {
-    text-align: center;
+    #site-header-title {
+        font-size: 1.25rem;
 
-    #site-navigation-menu {
-        column-gap: 1rem;
+        a {
+            text-decoration: none;
+        }
+    }
+
+    #site-header-navigation-menu {
         display: flex;
-        justify-content: center;
+        column-gap: 1rem;
         list-style-type: none;
         padding-left: 0;
     }
@@ -62,8 +76,22 @@ code {
 
 #site-body {
     .post {
-        .post-header-metadata {
-            color: var(--grey);
+        background-color: var(--back);
+        border: var(--border);
+        box-shadow: var(--shadow);
+        margin: 2rem auto;
+        max-width: 60ch;
+        padding: 1rem 2rem;
+
+        .post-header {
+            .post-header-title {
+                margin: 0.5rem 0;
+            }
+
+            .post-header-metadata {
+                @include a(var(--grey), var(--grey));
+                color: var(--grey);
+            }
         }
 
         .post-body {
@@ -75,15 +103,40 @@ code {
             }
 
             pre {
-                border-left: 0.1rem solid var(--line);
+                border-left: var(--border);
                 line-height: 2rem;
-                padding: 0.5rem 1rem 0.5rem 1rem;
+                padding: 0.5rem 1rem;
             }
+        }
+
+        .post-footer {
+            .post-footer-navigation {
+                color: var(--grey);
+            }
+        }
+    }
+
+    .pagination ul {
+        column-gap: 1rem;
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        margin: 2rem auto;
+
+        .page-item {
+            background-color: var(--back);
+            border: var(--border);
+            box-shadow: var(--shadow);
+            padding: 0.5rem 1rem;
         }
     }
 }
 
 #site-footer {
+    @include a(var(--grey), var(--grey));
+    background-color: var(--back);
+    border-top: var(--border);
     color: var(--grey);
     text-align: center;
+    margin-top: auto;
 }
