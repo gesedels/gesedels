@@ -11,3 +11,5 @@ pretty_urls = false
 [[redirects]]
 from = "/index.xml"
 to = "/posts/index.xml"
+status = 301
+force = true
