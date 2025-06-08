@@ -1,6 +1,6 @@
 ---
 title: 'Cerulean'
-date: '2025-06-07'
+date: '2025-06-06'
 tags: ['summer', 'water', 'blue']
 ---
 
