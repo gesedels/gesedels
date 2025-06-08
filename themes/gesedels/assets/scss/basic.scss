@@ -6,7 +6,7 @@
     --purple: light-dark(#50a, #b6e);
     --silver: light-dark(#ccc, #555);
     --border: 0.1rem solid var(--silver);
-    --shadow: 0.1rem 0.1rem 0 var(--silver);
+    --shadow: 0.05rem 0.05rem 0.1rem var(--silver);
 }
 
 @mixin a($normal, $visited) {

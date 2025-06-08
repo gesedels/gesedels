@@ -14,7 +14,7 @@ pagerSize = 10
 path = "page"
 
 [params]
-description = "Haiku about our melancholy minutia, by Stephen Malone."
+description = "Haiku about the melancholy minutia, by Stephen Malone."
 navigation = [
     [
         "about",
