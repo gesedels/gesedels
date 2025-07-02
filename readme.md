@@ -124,8 +124,7 @@ Field  | Description
 
 ## Contributions
 
-> [!NOTE]
-> To do.
+Please send all bug reports and feature requests to the [issue tracker][it], thank you.
 
 [ca]: https://caddyserver.com
 [ch]: https://github.com/gesedels/gesedels/blob/main/changes.md
@@ -133,5 +132,6 @@ Field  | Description
 [js]: https://github.com/omniti-labs/jsend
 [li]: https://github.com/gesedels/gesedels/blob/main/license.md
 [go]: https://go.dev/doc/go1.24
+[it]: https://github.com/gesedels/gesedels/issues
 [rm]: https://github.com/gesedels/gesedels/blob/main/readme.md
 [sm]: https://github.com/gesedels
