@@ -2,6 +2,9 @@
 package test
 
 import (
+	"encoding/json"
+	"io"
+	"net/http/httptest"
 	"path/filepath"
 	"testing"
 
@@ -41,4 +44,16 @@ func MockDB(t *testing.T) *bbolt.DB {
 	})
 
 	return db
+}
+
+// Response returns the status code and JSON body from a ResponseRecorder.
+func Response(w *httptest.ResponseRecorder) (int, any) {
+	var data any
+	rslt := w.Result()
+	body, _ := io.ReadAll(rslt.Body)
+	if err := json.Unmarshal(body, &data); err != nil {
+		panic(err)
+	}
+
+	return rslt.StatusCode, data
 }
