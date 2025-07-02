@@ -13,6 +13,8 @@ Flag    | Default     | Description
 `-cost` | `12`        | The cost to generate a bcrypt hash.
 `-dbse` | `./bolt.db` | The database file to connect to.
 `-rate` | `100`       | The number of requests a user can make per hour.
+`-keym` | `64`        | The maximum size of a key name (in characters).
+`-valm` | `65536`     | The maximum size of a value body (in bytes).
 
 ## Database Structure
 
@@ -34,13 +36,20 @@ Field  | Description
 `hash` | A SHA256 hash of the key's `body` field.
 `pass` | A bcrypt hash of the key's password (if provided).
 
-## Endpoints
-
-### Design
+## API Design
 
 - All content is encoded in UTF-8 unicode.
 - All endpoints (except for `GET /`) return [JSend][js]-formatted JSON data.
-- All request bodies must be valid JSON or receive a `400 Bad Request`.
+- IP addresses are anonymised and recorded in access logs.
+- Gesedels is designed to run through a reverse-proxy (such as [Caddy][ca]).
+
+### Potential Errors
+
+- Request bodies that are not valid JSON receive a `400 Bad Request`.
+- Keys over `-keym` and values over `-valm` receive a `413 Content Too Large`.
+- Users exceeding `-rate` receive a `429 Too Many Requests`.
+
+## Endpoints
 
 ### `GET /`
 
@@ -80,6 +89,7 @@ Field  | Description
 `body` | The key's raw value body.
 `pass` | The key's password (optional).
 
+[ca]: https://caddyserver.com
 [ch]: https://github.com/gesedels/gesedels/blob/main/changes.md
 [db]: https://github.com/etcd-io/bbolt
 [js]: https://github.com/omniti-labs/jsend
