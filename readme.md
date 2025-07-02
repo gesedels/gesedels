@@ -1,4 +1,4 @@
-# Gesedels 
+# Gesedels
 
 **Gesedels** is an obsessively over-engineered key-value API, written in [Go 1.24][go] by [Stephen Malone][sm].
 
@@ -7,11 +7,11 @@
 
 ## Command-Line Usage
 
-Flag    | Default     | Description 
+Flag    | Default     | Description
 ------- | ----------- | -----------
 `-addr` | `:8080`     | The server address to listen on.
 `-cost` | `12`        | The cost to generate a bcrypt hash.
-`-dbse` | `./bolt.db` | The database file to connect to. 
+`-dbse` | `./bolt.db` | The database file to connect to.
 `-rate` | `100`       | The number of requests a user can make per hour.
 
 ## Database Structure
@@ -24,7 +24,7 @@ All data is stored in a single [Bolt database][db]. Key-value pairs are stored a
   "init": "1751435396",
   "hash": "8e2f3a93aeb2dff313fbb6e5b915261f36a8eca426fa7f8bd385f19c2ba287ae",
   "pass": "$2a$12$Bb1CsGvg7FP33U3XCse7tu5Z4VHP8sevkD7cKi8RQ.uyzGLYXxz76"
-}    
+}
 ```
 
 Field  | Description
@@ -40,6 +40,7 @@ Field  | Description
 
 - All content is encoded in UTF-8 unicode.
 - All endpoints (except for `GET /`) return [JSend][js]-formatted JSON data.
+- All request bodies must be valid JSON or receive a `400 Bad Request`.
 
 ### `GET /`
 
@@ -55,12 +56,29 @@ $ GET /
 Return the value (the `body` field) of an existing key.
 
 > [!WARNING]
-> All keys are public. If a user knows a key name, they can access it.
+> All keys are public. If you know a key name, you can access it.
 
 ```text
 $ GET /foo
 > 200 {"status": "success", "data": "Bar."}
 ```
+
+### `POST /{key}`
+
+Create a new key-value pair with a body and optional password.
+
+> [!WARNING]
+> Passwords only control edit requests, they do not control `GET`s.
+
+```text
+$ POST /foo {"body": "Bar.", "pass": "hunter2"}
+> 200 {"status": "success"}
+```
+
+Field  | Description
+------ | -----------
+`body` | The key's raw value body.
+`pass` | The key's password (optional).
 
 [ch]: https://github.com/gesedels/gesedels/blob/main/changes.md
 [db]: https://github.com/etcd-io/bbolt
