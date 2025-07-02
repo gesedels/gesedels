@@ -22,7 +22,7 @@ func writeJSON(w http.ResponseWriter, code int, data any) {
 	}
 
 	w.WriteHeader(code)
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	fmt.Fprint(w, text)
 }
 

@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/gesedels/gesedels/gesedels/tools/test"
-	"github.com/stretchr/testify/assert"
 )
 
 func TestWriteJSON(t *testing.T) {
@@ -15,9 +14,7 @@ func TestWriteJSON(t *testing.T) {
 
 	// success
 	writeJSON(w, http.StatusOK, "test")
-	code, data := test.Response(w)
-	assert.Equal(t, http.StatusOK, code)
-	assert.Equal(t, "test", data)
+	test.AssertResponse(t, w, http.StatusOK, "test")
 }
 
 func TestError(t *testing.T) {
@@ -26,12 +23,10 @@ func TestError(t *testing.T) {
 
 	// success
 	Error(w, http.StatusInternalServerError, "test")
-	code, data := test.Response(w)
-	assert.Equal(t, http.StatusInternalServerError, code)
-	assert.Equal(t, map[string]any{
+	test.AssertResponse(t, w, http.StatusInternalServerError, map[string]any{
 		"status":  "error",
 		"message": "test",
-	}, data)
+	})
 }
 
 func TestFailure(t *testing.T) {
@@ -40,12 +35,10 @@ func TestFailure(t *testing.T) {
 
 	// success
 	Failure(w, http.StatusBadRequest, map[string]string{"test": "test"})
-	code, data := test.Response(w)
-	assert.Equal(t, http.StatusBadRequest, code)
-	assert.Equal(t, map[string]any{
+	test.AssertResponse(t, w, http.StatusBadRequest, map[string]any{
 		"status": "failure",
 		"data":   map[string]any{"test": "test"},
-	}, data)
+	})
 }
 
 func TestSuccess(t *testing.T) {
@@ -54,10 +47,8 @@ func TestSuccess(t *testing.T) {
 
 	// success
 	Success(w, http.StatusOK, "test")
-	code, data := test.Response(w)
-	assert.Equal(t, http.StatusOK, code)
-	assert.Equal(t, map[string]any{
+	test.AssertResponse(t, w, http.StatusOK, map[string]any{
 		"status": "success",
 		"data":   "test",
-	}, data)
+	})
 }
