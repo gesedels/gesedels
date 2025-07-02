@@ -32,8 +32,38 @@ Field  | Description
 `hash` | A SHA256 hash of the key's `body` field.
 `pass` | A bcrypt hash of the key's password (if provided).
 
+## Endpoints
+
+### Design
+
+- All content is encoded in UTF-8 unicode.
+- All endpoints (except for `GET /`) return [JSend][js]-formatted JSON data.
+
+### `GET /`
+
+Return [`readme.md`][rm] as a `text/plain` Markdown page.
+
+```text
+$ GET /
+> 200 "Gesedels is..."
+```
+
+### `GET /{key}`
+
+Return the value (the `body` field) of an existing key.
+
+> [!WARNING]
+> All keys are public. If a user knows a key name, they can access it.
+
+```text
+$ GET /foo
+> 200 {"status": "success", "data": "Bar."}
+```
+
 [ch]: https://github.com/gesedels/gesedels/blob/main/changes.md
 [db]: https://github.com/etcd-io/bbolt
+[js]: https://github.com/omniti-labs/jsend
 [li]: https://github.com/gesedels/gesedels/blob/main/license.md
 [go]: https://go.dev/doc/go1.24
+[rm]: https://github.com/gesedels/gesedels/blob/main/readme.md
 [sm]: https://github.com/gesedels
