@@ -1,11 +1,20 @@
 package test
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"go.etcd.io/bbolt"
 )
+
+func TestAssertErr(t *testing.T) {
+	// setup
+	err := errors.New("test")
+
+	// success
+	AssertErr(t, err, "t.*")
+}
 
 func TestMockDB(t *testing.T) {
 	// success

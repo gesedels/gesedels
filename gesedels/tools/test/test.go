@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"go.etcd.io/bbolt"
 )
 
@@ -16,6 +17,11 @@ var MockData = map[string]map[string]string{
 		"hash": "8e2f3a93aeb2dff313fbb6e5b915261f36a8eca426fa7f8bd385f19c2ba287ae",
 		"pass": "$2a$12$Bb1CsGvg7FP33U3XCse7tu5Z4VHP8sevkD7cKi8RQ.uyzGLYXxz76",
 	},
+}
+
+// AssertErr asserts an error message matches a regular expression.
+func AssertErr(t *testing.T, err error, regx string) bool {
+	return assert.Regexp(t, regx, err.Error())
 }
 
 // MockDB returns a temporary database populated with MockData.
