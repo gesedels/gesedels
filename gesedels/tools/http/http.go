@@ -17,10 +17,8 @@ const error500 = `{
 func writeJSON(w http.ResponseWriter, code int, data any) {
 	text, err := json.Encode(data)
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		w.Header().Set("Content-Type", "application/json")
-		fmt.Fprint(w, error500)
-		return
+		code = http.StatusInternalServerError
+		text = error500
 	}
 
 	w.WriteHeader(code)
