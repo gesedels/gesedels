@@ -5,16 +5,15 @@
 - See [`changes.md`][ch] for the full changelog.
 - See [`license.md`][li] for the open-source license (BSD-3).
 
-## Command-Line Usage
+## Command-Line Flags
 
 Flag    | Default     | Description
 ------- | ----------- | -----------
 `-addr` | `:8080`     | The server address to listen on.
 `-cost` | `12`        | The cost to generate a bcrypt hash.
 `-dbse` | `./bolt.db` | The database file to connect to.
-`-rate` | `100`       | The number of requests a user can make per hour.
 `-keym` | `64`        | The maximum size of a key name (in characters).
-`-valm` | `65536`     | The maximum size of a value body (in bytes).
+`-valm` | `65536`     | The maximum size of a value body (in characters).
 
 ## Database Structure
 
@@ -41,7 +40,7 @@ Field  | Description
 - All content is encoded in UTF-8 unicode.
 - All endpoints (except for `GET /`) return [JSend][js]-formatted JSON data.
 - IP addresses are anonymised and recorded in access logs.
-- Gesedels is designed to run through a reverse-proxy (such as [Caddy][ca]).
+- The API is designed to be run through a reverse-proxy (such as [Caddy][ca]).
 
 ### Potential Errors
 
@@ -88,6 +87,21 @@ Field  | Description
 ------ | -----------
 `body` | The key's raw value body.
 `pass` | The key's password (optional).
+
+### `PUT /{key}`
+
+> [!NOTE]
+> To do.
+
+### `DELETE /{key}`
+
+> [!NOTE]
+> To do.
+
+## Contributions
+
+> [!NOTE]
+> To do.
 
 [ca]: https://caddyserver.com
 [ch]: https://github.com/gesedels/gesedels/blob/main/changes.md
