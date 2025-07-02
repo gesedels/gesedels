@@ -14,8 +14,8 @@ Flag    | Default     | Description
 `-dbse` | `./bolt.db` | The database file to connect to.
 `-rate` | `100`       | The number of requests a user can make per hour.
 `-secs` | `2678400`   | The maximum time-to-live for a key (in seconds).
-`-keym` | `64`        | The maximum size of a key name (in characters).
-`-valm` | `65536`     | The maximum size of a value body (in characters).
+`-keym` | `64`        | The maximum size of keys and passwords (in characters).
+`-valm` | `65536`     | The maximum size of value bodies (in characters).
 
 ## Database Structure
 
@@ -47,6 +47,7 @@ Field  | Description
 ### Potential Errors
 
 - Request bodies that are not valid JSON receive a `400 Bad Request` error.
+- Requests with missing or invalid passwords recieve a `401 Unauthorized` error.
 - Requests for non-existent or deleted keys recieve a `404 Not Found` error.
 - Keys over `-keym` and values over `-valm` receive a `413 Content Too Large` error.
 - Users exceeding `-rate` receive a `429 Too Many Requests` error.
@@ -79,18 +80,47 @@ $ POST /foo {"body": "Bar.", "pass": "hunter2"}
 
 Field  | Description
 ------ | -----------
-`body` | The key's raw value body.
-`pass` | The key's password (optional).
+`body` | A raw value body.
+`pass` | A password under `-keym` characters (optional).
 
 ### `PUT /{key}`
 
+Update an existing key with a new body if the password is valid.
+
 > [!NOTE]
-> To do.
+> Keys without passwords cannot use this endpoint.
+
+> [!WARNING]
+> Updates are destructive and previous versions are not stored or backed up.
+
+```text
+$ PUT /foo {"body": "Qux.", "pass": "hunter2"}
+> 200 {"status": "success"}
+```
+
+Field  | Description
+------ | -----------
+`body` | A new raw value body.
+`pass` | The key's existing password.
 
 ### `DELETE /{key}`
 
+Delete an existing key and all attached data if the password is valid.
+
 > [!NOTE]
-> To do.
+> Keys without passwords cannot use this endpoint.
+
+> [!WARNING]
+> Deletes are destructive and the deleted data is not stored or backed up.
+
+```text
+$ DELETE /foo {"pass": "hunter2"}
+> 200 {"status": "success"}
+```
+
+Field  | Description
+------ | -----------
+`pass` | The key's existing password.
 
 ## Contributions
 
