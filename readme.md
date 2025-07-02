@@ -58,7 +58,7 @@ Field  | Description
 Return the value (the `body` field) of an existing key.
 
 > [!WARNING]
-> Keys are unlisted but public. If you know a key name, you can access it.
+> Keys are unlisted but public. If someone knows a key name they can access it.
 
 ```text
 $ GET /foo
