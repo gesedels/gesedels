@@ -7,10 +7,12 @@
 
 ## Command-Line Usage
 
-Flag    | Default          | Description 
-------- | ---------------- | -----------
-`-addr` | `127.0.0.1:8080` | The server address to listen on.
-`-dbse` | `./database.db`  | The database file to connect to. 
+Flag    | Default     | Description 
+------- | ----------- | -----------
+`-addr` | `:8080`     | The server address to listen on.
+`-cost` | `12`        | The cost to generate a bcrypt hash.
+`-dbse` | `./bolt.db` | The database file to connect to. 
+`-rate` | `100`       | The number of requests a user can make per hour.
 
 ## Database Structure
 
