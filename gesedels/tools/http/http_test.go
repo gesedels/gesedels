@@ -12,9 +12,19 @@ func TestWriteJSON(t *testing.T) {
 	// setup
 	w := httptest.NewRecorder()
 
-	// success
+	// success - valid JSON
 	writeJSON(w, http.StatusOK, "test")
 	test.AssertResponse(t, w, http.StatusOK, "test")
+
+	// setup
+	w = httptest.NewRecorder()
+
+	// success - invalid JSON
+	writeJSON(w, http.StatusOK, make(chan int))
+	test.AssertResponse(t, w, http.StatusInternalServerError, map[string]any{
+		"status":  "error",
+		"message": "internal server error",
+	})
 }
 
 func TestError(t *testing.T) {
