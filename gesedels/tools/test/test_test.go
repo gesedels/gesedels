@@ -19,6 +19,7 @@ func TestAssertErr(t *testing.T) {
 func TestAssertResponse(t *testing.T) {
 	// setup
 	w := httptest.NewRecorder()
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	fmt.Fprintf(w, `"test"`)
 
 	// success

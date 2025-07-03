@@ -8,21 +8,16 @@ import (
 	"github.com/gesedels/gesedels/gesedels/tools/json"
 )
 
-const error500 = `{
-	"status": "error",
-	"message": "internal server error"
-}`
-
 // writeJSON writes a JSON HTTP response to a ResponseWriter.
 func writeJSON(w http.ResponseWriter, code int, data any) {
 	text, err := json.Encode(data)
 	if err != nil {
 		code = http.StatusInternalServerError
-		text = error500
+		text = `{"status": "error", "message": "internal server error"}`
 	}
 
-	w.WriteHeader(code)
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(code)
 	fmt.Fprint(w, text)
 }
 

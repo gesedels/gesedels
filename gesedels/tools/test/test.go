@@ -25,7 +25,9 @@ func AssertResponse(t *testing.T, w *httptest.ResponseRecorder, code int, want a
 
 	var data any
 	err = json.Unmarshal(body, &data)
+	ctyp := rslt.Header.Get("Content-Type")
 	assert.Equal(t, code, rslt.StatusCode)
 	assert.Equal(t, want, data)
+	assert.Equal(t, "application/json; charset=utf-8", ctyp)
 	assert.NoError(t, err)
 }
